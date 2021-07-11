@@ -1,21 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import splashScreen from './components/splashScreen';
+import news from './components/news';
+import main from './components/main';
+import register from './components/register';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = createStackNavigator(
+  {
+    splashScreen: {
+      screen: splashScreen,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    news: {
+      screen: news,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    main: {
+      screen: main,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    register: {
+      screen: register,
+      navigationOptions: {
+        header: null,
+      },
+    },
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-});
+
+  { initialRouteName: 'splashScreen' }
+);
+
+//Not show warning
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
+console.disableYellowBox = true;
+
+export default createAppContainer(App);
