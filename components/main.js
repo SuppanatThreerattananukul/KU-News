@@ -62,28 +62,25 @@ class Main extends Component {
                   style={styles.button}
                   onPress={this.onPress}
                 >
-                  <View style={styles.row}>
-                  <Text style={{ fontWeight: 'bold', color: '#ffffff' }}>สมัครสมาชิก</Text>
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                  <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>สมัครสมาชิก</Text>
                     <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
-                    </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => { Linking.openURL('https://th.ku1888.net/') }}
                 >
-                  <View style={styles.row}>
-                    <Text style={{ fontWeight: 'bold', color: '#ffffff' }}>เข้าสู่ระบบ</Text>
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>เข้าสู่ระบบ</Text>
                       <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
-                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.buttonMoreInformation}
                   onPress={() => { Linking.openURL('https://th.ku1888.net/Home/HelpCenter') }}
                 >
-                  <View style={styles.row}>
-                    <Text style={{ fontWeight: 'bold', color: '#ffffff' }}>บริการลูกค้า24ชม.</Text>
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>บริการลูกค้า24ชม.</Text>
                       <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
-                  </View>
                 </TouchableOpacity>
               </View>
 
@@ -130,6 +127,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   button: {
+    justifyContent: 'space-between',
+        flexDirection: 'row',
     alignItems: "center",
     backgroundColor: "#3498DB",
     padding: 10,
@@ -137,6 +136,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonMoreInformation: {
+    justifyContent: 'space-between',
+        flexDirection: 'row',
     alignItems: "center",
     backgroundColor: "#F4D03F",
     padding: 10,

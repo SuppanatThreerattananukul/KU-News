@@ -88,10 +88,9 @@ class News extends Component {
                                     style={styles.button}
                                     onPress={this.onPress}
                                 >
-                                    <View style={styles.row}>
-                                        <Text style={{ fontWeight: 'bold', color: '#ffffff' }}>ถัดไป</Text>
-                                            <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={21} />
-                                    </View>
+                                    <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>ถัดไป</Text>
+                                    <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={21} />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -137,6 +136,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
         alignItems: "center",
         backgroundColor: "#3498DB",
         padding: 10,
