@@ -47,14 +47,14 @@ class Register extends Component {
                             <Text>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
                         </View>
                         <View style={{ flex: 1 }}>
-                            {/* <TextInput
+                            <TextInput
                                 placeholder='ชื่อ-นามสกุล'
                                 value={this.state.Title}
                                 onChangeText={Title => this.setState({ Title })}
                                 style={styles.input}
                                 underlineColorAndroid="transparent"
                                 keyboardType={'email-address'}
-                            /> */}
+                            />
 
                             <TextInput
                                 placeholder='เบอร์โทรศัพท์'
@@ -65,14 +65,14 @@ class Register extends Component {
                                 keyboardType={'number-pad'}
                             />
 
-                            {/* <TextInput
+                            <TextInput
                                 placeholder='Id line'
                                 value={this.state.Title}
                                 onChangeText={Title => this.setState({ Title })}
                                 style={styles.input}
                                 underlineColorAndroid="transparent"
                                 keyboardType={'email-address'}
-                            /> */}
+                            />
                         </View>
 
                         <View style={styles.bottom}>
@@ -121,7 +121,7 @@ class Register extends Component {
                                 >
                                     <View style={styles.row}>
                                         <Text style={{ fontWeight: 'bold', color: '#ffffff' }}>ถัดไป</Text>
-                                            <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                                        <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                                     </View>
                                 </TouchableOpacity>
                             </View>
