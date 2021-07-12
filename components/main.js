@@ -10,6 +10,7 @@ import {
   Linking,
   ScrollView,
 } from 'react-native'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class Main extends Component {
   state = {
@@ -30,53 +31,61 @@ class Main extends Component {
     return (
 
       <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
-         <ScrollView 
+        <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ paddingBottom: 20, flexGrow: 1, justifyContent: 'space-between', }}>
-        <View style={styles.container}>
-          <StatusBar hidden={true} />
-          <View style={styles.content}>
-            <View style={styles.row}>
-              <View style={{ justifyContent: 'center' }}>
-                <Image style={{ alignSelf: 'flex-start', width: 120, height: 120 }}
-                  source={require('../asset/image/logo.png')} />
+          <View style={styles.container}>
+            <StatusBar hidden={true} />
+            <View style={styles.content}>
+              <View style={styles.row}>
+                <View style={{ justifyContent: 'center' }}>
+                  <Image style={{ alignSelf: 'flex-start', width: 120, height: 120 }}
+                    source={require('../asset/image/logo_KuNews2.png')} />
+                </View>
+                <View style={{ justifyContent: 'center', marginStart: 20 }}>
+                  <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
+                  <Text>V.0.0.1</Text>
+                </View>
               </View>
-              <View style={{ justifyContent: 'center', marginStart: 20 }}>
-                <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                <Text>Detail</Text>
-              </View>
+
             </View>
 
-          </View>
-          <View style={{  alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                <Text>Detail</Text>
-          
-            </View>
-          <View style={styles.content}>
-            <View style={{ width: "95%" }}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={this.onPress}
-              >
-                <Text>สมัครบัญชีใหม่</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={ ()=>{ Linking.openURL('https://th.ku1888.net/')}}
-              >
-                <Text>ลงชื่อเข้าใช้</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonMoreInformation}
-                onPress={ ()=>{ Linking.openURL('https://th.ku1888.net/Home/HelpCenter')}}
-              >
-                <Text>สอบถามเพิ่มเติม</Text>
-              </TouchableOpacity>
-            </View>
+            <View style={styles.bottom}>
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontWeight: 'bold' }}>เข้าสู่ระบบKUBET</Text>
+                <Text>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
+                <Text>เพื่อเริ่มต้นการใช้งาน</Text>
 
+              </View>
+              <View style={{ width: "95%" }}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={this.onPress}
+                >
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                  <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>สมัครสมาชิก</Text>
+                    <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => { Linking.openURL('https://th.ku1888.net/') }}
+                >
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>เข้าสู่ระบบ</Text>
+                      <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.buttonMoreInformation}
+                  onPress={() => { Linking.openURL('https://th.ku1888.net/Home/HelpCenter') }}
+                >
+                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>บริการลูกค้า24ชม.</Text>
+                      <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                </TouchableOpacity>
+              </View>
+
+            </View>
           </View>
-        </View>
         </ScrollView>
       </ImageBackground>
     )
@@ -118,6 +127,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   button: {
+    justifyContent: 'space-between',
+        flexDirection: 'row',
     alignItems: "center",
     backgroundColor: "#3498DB",
     padding: 10,
@@ -125,12 +136,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonMoreInformation: {
+    justifyContent: 'space-between',
+        flexDirection: 'row',
     alignItems: "center",
     backgroundColor: "#F4D03F",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
   },
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 36,
+    marginStart: 20
+  }
 });
 
 export default Main;

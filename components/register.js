@@ -11,6 +11,8 @@ import {
     Dimensions,
     ScrollView,
 } from 'react-native'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const { width, height } = Dimensions.get('window');
 class Register extends Component {
     state = {
@@ -37,13 +39,12 @@ class Register extends Component {
                     <View style={styles.container}>
                         <StatusBar hidden={true} />
                         <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
-                            source={require('../asset/image/logo.png')}
+                            source={require('../asset/image/logo_KuNews2.png')}
                         />
 
                         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                            <Text>Detail</Text>
-                            <Text>Detail</Text>
+                            <Text style={{ fontWeight: 'bold' }}>สมัครสมาชิก</Text>
+                            <Text>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
                         </View>
                         <View style={{ flex: 1 }}>
                             <TextInput
@@ -61,7 +62,7 @@ class Register extends Component {
                                 onChangeText={Title => this.setState({ Title })}
                                 style={styles.input}
                                 underlineColorAndroid="transparent"
-                                keyboardType={'email-address'}
+                                keyboardType={'number-pad'}
                             />
 
                             <TextInput
@@ -74,16 +75,16 @@ class Register extends Component {
                             />
                         </View>
 
-                        <View style={styles.content}>
+                        <View style={styles.bottom}>
                             <View style={styles.row}>
                                 <View style={{ marginBottom: 10 }}>
                                     <Image style={{ alignSelf: 'center', width: 35, height: 40 }}
-                                        source={require('../asset/image/security.png')}
+                                        source={require('../asset/image/rtyrtuy.png')}
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                                    <Text>Detail</Text>
+                                    <Text style={{ fontWeight: 'bold' }}>ความลับ</Text>
+                                    <Text>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
                                 </View>
 
                             </View>
@@ -91,12 +92,12 @@ class Register extends Component {
                             <View style={styles.row}>
                                 <View style={{ marginBottom: 10 }}>
                                     <Image style={{ alignSelf: 'center', width: 35, height: 40 }}
-                                        source={require('../asset/image/security.png')}
+                                        source={require('../asset/image/rtyrtuy.png')}
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                                    <Text>Detail</Text>
+                                    <Text style={{ fontWeight: 'bold' }}>ความปลอดภัย</Text>
+                                    <Text>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                 </View>
 
                             </View>
@@ -104,12 +105,12 @@ class Register extends Component {
                             <View style={styles.row}>
                                 <View style={{ marginBottom: 10 }}>
                                     <Image style={{ alignSelf: 'center', width: 35, height: 40 }}
-                                        source={require('../asset/image/security.png')}
+                                        source={require('../asset/image/rtyrtuy.png')}
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                                    <Text>Detail</Text>
+                                    <Text style={{ fontWeight: 'bold' }}>ความเร็ว</Text>
+                                    <Text>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                 </View>
 
                             </View>
@@ -118,10 +119,11 @@ class Register extends Component {
                                     style={styles.button}
                                     onPress={this.onPress}
                                 >
-                                    <Text>สมัครบัญชีใหม่</Text>
+                                    <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
+                                        <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>ถัดไป</Text>
+                                        <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                                 </TouchableOpacity>
                             </View>
-
                         </View>
                     </View>
                 </ScrollView>
@@ -165,6 +167,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
         alignItems: "center",
         backgroundColor: "#3498DB",
         padding: 10,
@@ -182,6 +186,12 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginBottom: 10,
     },
+    bottom: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        marginBottom: 36,
+        marginStart: 20
+    }
 });
 
 export default Register;
