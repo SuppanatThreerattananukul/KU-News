@@ -32,7 +32,7 @@ class SplashScreen extends Component {
         <View style={styles.container}>
           <StatusBar hidden={true} />
           <Image style={{ alignSelf: 'center', width: 200, height: 200 }}
-            source={require('../asset/image/logo.png')}
+            source={require('../asset/image/logo_KuNews2.png')}
           />
         </View>
         </ImageBackground>
