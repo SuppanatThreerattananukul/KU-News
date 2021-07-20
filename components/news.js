@@ -8,41 +8,72 @@ import {
     Text,
     TouchableOpacity,
     ScrollView,
+    SafeAreaView,
+    Animated,
 } from 'react-native'
+import { color } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Font from 'expo-font'
 
 class News extends Component {
     state = {
         Username: '',
-        Password: ''
+        Password: '',
+        fadeAnim: new Animated.Value(0)
     }
+    
     componentDidMount() {
         // setTimeout(() => {
         //   this.props.navigation.navigate('news')
         // }, 1000)
+        this.fadeIn();
+        this._loadingFont();
     }
+
+    async _loadingFont () {
+        await Font.loadAsync({
+          PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
+          PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
+          PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
+        })
+      }
 
     onPress = () => {
         this.props.navigation.navigate('main')
     }
 
+    fadeIn = () => {
+        // Will change fadeAnim value to 1 in 5 seconds
+        Animated.timing(this.state.fadeAnim, {
+          toValue: 1,
+          duration: 1000
+        }).start();
+      };
+
     render() {
         return (
-
+            <SafeAreaView style={styles.container}>
             <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
                 <ScrollView
                     keyboardShouldPersistTaps="handled"
                     contentContainerStyle={{ paddingBottom: 20, flexGrow: 1, justifyContent: 'space-between', }}>
                     <View style={styles.container}>
-                        <StatusBar hidden={true} />
-                        <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
+                        <StatusBar
+                            animated={true}
+                            backgroundColor="#61dafb"
+                            barStyle='dark-content'
+                            showHideTransition='fade'
+                            hidden='false'/>
+                        <Animated.View style={{opacity: this.state.fadeAnim}}>
+                        <Image style={{ alignSelf: 'center', width: 150, height: 150, marginTop: 80 }}
                             source={require('../asset/image/logo_KuNews2.png')}
                         />
 
                         <View style={styles.content}>
-                            <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                            <Text>V.0.0.1</Text>
+                            <Text style={{ fontSize: 20,fontWeight: 'bold',color: '#696969', fontFamily:"PromptBold" }}>Kubet News</Text>
+                            <Text style={{ fontSize: 16,color: '#696969',fontFamily:"PromptRegular" }}>V.0.0.1</Text>
                         </View>
+                        </Animated.View>
 
                         <View style={styles.bottom}>
                             <View style={styles.row}>
@@ -52,8 +83,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความลับ</Text>
-                                    <Text>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความลับ</Text>
+                                    <Text style={{ color: '#808080',fontFamily:"PromptRegular" }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
                                 </View>
 
                             </View>
@@ -65,8 +96,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความปลอดภัย</Text>
-                                    <Text>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความปลอดภัย</Text>
+                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                 </View>
 
                             </View>
@@ -78,8 +109,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความเร็ว</Text>
-                                    <Text>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความเร็ว</Text>
+                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                 </View>
 
                             </View>
@@ -88,15 +119,18 @@ class News extends Component {
                                     style={styles.button}
                                     onPress={this.onPress}
                                 >
-                                    <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
-                                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>ถัดไป</Text>
-                                    <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={21} />
+                                    <View style={{ flex: 0.1 }}></View>
+                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff', fontFamily:"PromptBold" }}>ถัดไป</Text>
+                                    <View style={{ flex: 0.1 }}>
+                                        <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={21} />
+                                    </View>
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
                 </ScrollView>
             </ImageBackground>
+            </SafeAreaView>
         )
     }
 }

@@ -9,78 +9,110 @@ import {
   TouchableOpacity,
   Linking,
   ScrollView,
+  SafeAreaView,
+  Animated,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Font from 'expo-font'
 
 class Main extends Component {
   state = {
     Username: '',
-    Password: ''
+    Password: '',
+    fadeAnim: new Animated.Value(0)
   }
   componentDidMount() {
     // setTimeout(() => {
     //   this.props.navigation.navigate('Main')
     // }, 1000)
+    this.fadeIn();
+    this._loadingFont();
+  }
+
+  async _loadingFont () {
+    await Font.loadAsync({
+      PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
+      PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
+      PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
+    })
   }
 
   onPress = () => {
     this.props.navigation.navigate('register')
   }
 
+  fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 1,
+      duration: 1000
+    }).start();
+  };
+
   render() {
     return (
-
+      <SafeAreaView style={styles.container}>
       <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ paddingBottom: 20, flexGrow: 1, justifyContent: 'space-between', }}>
           <View style={styles.container}>
-            <StatusBar hidden={true} />
-            <View style={styles.content}>
+            <StatusBar
+              animated={true}
+              backgroundColor="#61dafb"
+              barStyle='dark-content'
+              showHideTransition='fade'
+              hidden='false'/>
+            <Animated.View style={[styles.content, {opacity: this.state.fadeAnim}]}>
               <View style={styles.row}>
                 <View style={{ justifyContent: 'center' }}>
-                  <Image style={{ alignSelf: 'flex-start', width: 120, height: 120 }}
+                  <Image style={{ alignSelf: 'flex-start', width: 150, height: 150 }}
                     source={require('../asset/image/logo_KuNews2.png')} />
                 </View>
                 <View style={{ justifyContent: 'center', marginStart: 20 }}>
-                  <Text style={{ fontWeight: 'bold' }}>Kubet new</Text>
-                  <Text>V.0.0.1</Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#696969', fontFamily:"PromptBold"}}>Kubet New</Text>
+                  <Text style={{ fontSize: 20, color: '#696969', fontFamily:"PromptRegular"}}>V.0.0.1</Text>
                 </View>
               </View>
 
-            </View>
+            </Animated.View>
 
             <View style={styles.bottom}>
-              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontWeight: 'bold' }}>เข้าสู่ระบบKUBET</Text>
-                <Text>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
-                <Text>เพื่อเริ่มต้นการใช้งาน</Text>
-
-              </View>
+              <Animated.View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20, opacity: this.state.fadeAnim}}>
+                <Text style={{ fontWeight: 'bold', fontSize: 20 ,color: '#696969',fontFamily:"PromptBold"}}>เข้าสู่ระบบ KUBET</Text>
+                <Text style={{ fontSize: 16 ,color: '#696969', fontFamily:"PromptRegular"}}>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
+                <Text style={{ fontSize: 16,color: '#696969', fontFamily:"PromptRegular"}}>เพื่อเริ่มต้นการใช้งาน</Text>
+              </Animated.View>
               <View style={{ width: "95%" }}>
-                <TouchableOpacity
+              <TouchableOpacity
                   style={styles.button}
                   onPress={this.onPress}
                 >
-                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
-                  <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>สมัครสมาชิก</Text>
+                  <View style={{ flex: 0.1 }}></View>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>สมัครสมาชิก</Text>
+                  <View style={{ flex: 0.1 }}>
                     <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => { Linking.openURL('https://th.ku1888.net/') }}
                 >
-                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
-                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>เข้าสู่ระบบ</Text>
-                      <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                  <View style={{ flex: 0.1 }}></View>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>เข้าสู่ระบบ</Text>
+                  <View style={{ flex: 0.1 }}>
+                    <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.buttonMoreInformation}
                   onPress={() => { Linking.openURL('https://th.ku1888.net/Home/HelpCenter') }}
                 >
-                  <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
-                    <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>บริการลูกค้า24ชม.</Text>
+                  <View style={{ flex: 0.1 }}></View>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>บริการลูกค้า24ชม.</Text>
+                  <View style={{ flex: 0.1 }}>
                       <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                  </View>
                 </TouchableOpacity>
               </View>
 
@@ -88,6 +120,7 @@ class Main extends Component {
           </View>
         </ScrollView>
       </ImageBackground>
+      </SafeAreaView>
     )
   }
 }
@@ -117,8 +150,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    marginStart: 20
+    alignItems: 'center',
   },
   column: {
     flexDirection: 'column'
