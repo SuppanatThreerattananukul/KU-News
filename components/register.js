@@ -114,7 +114,7 @@ class Register extends Component {
                             showHideTransition='fade'
                             hidden={false}/>
                         <Animated.View style={[{opacity: this.state.fadeAnim}]}>
-                            <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
+                            <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 30 }}
                                 source={require('../asset/image/logo_KuNews2.png')}
                             />
                             <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
