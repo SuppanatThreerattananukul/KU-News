@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1081403083562",
+    "firebase_url": "https://ai-kubet-dev-a5f91-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ai-kubet-dev-a5f91",
+    "storage_bucket": "ai-kubet-dev-a5f91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081403083562:android:cadd4335a0dfab65796c53",
+        "android_client_info": {
+          "package_name": "com.kunews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081403083562-c4dab3avstj3o0m79btr7ab5g2r3oava.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdlnqJHs1QCAm7wyN3RIWEbNaTMzuVYVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081403083562-c4dab3avstj3o0m79btr7ab5g2r3oava.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081403083562:android:1c1fa927c246c999796c53",
+        "android_client_info": {
+          "package_name": "com.example.ai.kubet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081403083562-c4dab3avstj3o0m79btr7ab5g2r3oava.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdlnqJHs1QCAm7wyN3RIWEbNaTMzuVYVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081403083562-c4dab3avstj3o0m79btr7ab5g2r3oava.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

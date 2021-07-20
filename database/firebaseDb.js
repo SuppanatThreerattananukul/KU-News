@@ -4,16 +4,16 @@ import firestore from 'firebase/firestore';
 const settings = {timestampsInSnapshots: true};
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBrabdxmLofbkHd_udyXIpgiIoZrFnjBhs",
-    authDomain: "sut-join.firebaseapp.com",
-    databaseURL: "https://sut-join.firebaseio.com",
-    projectId: "sut-join",
-    storageBucket: "sut-join.appspot.com",
-    messagingSenderId: "535754743778",
-    appId: "1:535754743778:web:10f39c02d07646bee0a3bb",
-    measurementId: "G-H9WN304R3Q"
+    apiKey: "AIzaSyBCQjaaNRzgFZ9kh5R3OkzO4Caett8iZR8",
+    authDomain: "ai-kubet-dev-a5f91.firebaseapp.com",
+    databaseURL: "https://ai-kubet-dev-a5f91-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "ai-kubet-dev-a5f91",
+    storageBucket: "ai-kubet-dev-a5f91.appspot.com",
+    messagingSenderId: "1081403083562",
+    appId: "1:1081403083562:web:d94938a8bdaec1a0796c53",
+    measurementId: "G-TZL424WYFD"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings(settings);
+firebase.firestore()
 export default firebase;

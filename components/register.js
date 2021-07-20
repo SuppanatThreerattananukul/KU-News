@@ -17,13 +17,13 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Font from 'expo-font'
 import firebase from '../database/firebaseDb';
+import firestore from '@react-native-firebase/firestore';
 
 const { width, height } = Dimensions.get('window');
 class Register extends Component {
     constructor() {
         super();
-        this.dbRef = firebase.firestore().collection("new_users");
-        firebase.database.enableLogging(true);
+        
     }
     state = {
         name: '',
@@ -33,6 +33,7 @@ class Register extends Component {
         fadeAnim: new Animated.Value(0),
     }
     componentDidMount() {
+        
         // setTimeout(() => {
         //   this.props.navigation.navigate('Register')
         // }, 1000)
@@ -41,13 +42,15 @@ class Register extends Component {
     }
 
     storeUser= () => {
+        console.log("test ",firestore().collection('new_users').doc('IQnnwkCU3R0lASk2dpnv').get())
         if(this.state.name == ''){
             alert('กรุณากรอกชื่อ-นามสกุล')
         }else {
             // this.setState({
             //     isLoading: true
             // })
-            this.dbRef.add({
+
+            firestore().collection("new_users").add({
                 idLine: this.state.idLine,
                 mobile: this.state.mobile,
                 name: this.state.name,
