@@ -10,71 +10,100 @@ import {
     TextInput,
     Dimensions,
     ScrollView,
+    SafeAreaView,
+    Animated,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Font from 'expo-font'
 
 const { width, height } = Dimensions.get('window');
 class Register extends Component {
     state = {
         Username: '',
-        Password: ''
+        Password: '',
+        fadeAnim: new Animated.Value(0),
     }
     componentDidMount() {
         // setTimeout(() => {
         //   this.props.navigation.navigate('Register')
         // }, 1000)
+        this.fadeIn();
+        this._loadingFont();
     }
+
+    async _loadingFont () {
+        await Font.loadAsync({
+          PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
+          PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
+          PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
+        })
+      }
 
     onPress = () => {
         alert("test")
     }
 
+    fadeIn = () => {
+        // Will change fadeAnim value to 1 in 5 seconds
+        Animated.timing(this.state.fadeAnim, {
+          toValue: 1,
+          duration: 1000
+        }).start();
+      };
+
     render() {
         return (
-
+            <SafeAreaView style={styles.container}>
             <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
                 <ScrollView
                     keyboardShouldPersistTaps="handled"
                     contentContainerStyle={{ paddingBottom: 20, flexGrow: 1, justifyContent: 'space-between', }}>
                     <View style={styles.container}>
-                        <StatusBar hidden={true} />
-                        <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
-                            source={require('../asset/image/logo_KuNews2.png')}
-                        />
-
-                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold' }}>สมัครสมาชิก</Text>
-                            <Text>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
-                        </View>
-                        <View style={{ flex: 1 }}>
-                            <TextInput
-                                placeholder='ชื่อ-นามสกุล'
-                                value={this.state.Title}
-                                onChangeText={Title => this.setState({ Title })}
-                                style={styles.input}
-                                underlineColorAndroid="transparent"
-                                keyboardType={'email-address'}
+                        <StatusBar
+                            animated={true}
+                            backgroundColor="#61dafb"
+                            barStyle='dark-content'
+                            showHideTransition='fade'
+                            hidden='false'/>
+                        <Animated.View style={[{opacity: this.state.fadeAnim}]}>
+                            <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
+                                source={require('../asset/image/logo_KuNews2.png')}
                             />
+                            <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+                                <Text style={{ fontSize: 18, fontWeight: 'bold',color: '#696969', fontFamily:"PromptBold"}}>สมัครสมาชิก</Text>
+                                <Text style={{ fontSize: 16, color: '#696969', fontFamily:"PromptRegular" }}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
+                            </View>
+                        </Animated.View>
+                        <Animated.View style={[{opacity: this.state.fadeAnim}]}>
+                            <View style={{ flex: 1 }}>
+                                <TextInput
+                                    placeholder='ชื่อ-นามสกุล'
+                                    value={this.state.Title}
+                                    onChangeText={Title => this.setState({ Title })}
+                                    style={styles.input}
+                                    underlineColorAndroid="transparent"
+                                    keyboardType={'email-address'}
+                                />
 
-                            <TextInput
-                                placeholder='เบอร์โทรศัพท์'
-                                value={this.state.Title}
-                                onChangeText={Title => this.setState({ Title })}
-                                style={styles.input}
-                                underlineColorAndroid="transparent"
-                                keyboardType={'number-pad'}
-                            />
+                                <TextInput
+                                    placeholder='เบอร์โทรศัพท์'
+                                    value={this.state.Title}
+                                    onChangeText={Title => this.setState({ Title })}
+                                    style={styles.input}
+                                    underlineColorAndroid="transparent"
+                                    keyboardType={'number-pad'}
+                                />
 
-                            <TextInput
-                                placeholder='Id line'
-                                value={this.state.Title}
-                                onChangeText={Title => this.setState({ Title })}
-                                style={styles.input}
-                                underlineColorAndroid="transparent"
-                                keyboardType={'email-address'}
-                            />
-                        </View>
-
+                                <TextInput
+                                    placeholder='Id line'
+                                    value={this.state.Title}
+                                    onChangeText={Title => this.setState({ Title })}
+                                    style={styles.input}
+                                    underlineColorAndroid="transparent"
+                                    keyboardType={'email-address'}
+                                />
+                            </View>
+                        </Animated.View>
                         <View style={styles.bottom}>
                             <View style={styles.row}>
                                 <View style={{ marginBottom: 10 }}>
@@ -83,8 +112,8 @@ class Register extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความลับ</Text>
-                                    <Text>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
+                                    <Text style={{ fontWeight: 'bold', color: '#808080', fontFamily:"PromptBold"}}>ความลับ</Text>
+                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
                                 </View>
 
                             </View>
@@ -96,8 +125,8 @@ class Register extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความปลอดภัย</Text>
-                                    <Text>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080', fontFamily:"PromptBold"}}>ความปลอดภัย</Text>
+                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                 </View>
 
                             </View>
@@ -109,8 +138,8 @@ class Register extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold' }}>ความเร็ว</Text>
-                                    <Text>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080', fontFamily:"PromptBold"}}>ความเร็ว</Text>
+                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                 </View>
 
                             </View>
@@ -119,15 +148,18 @@ class Register extends Component {
                                     style={styles.button}
                                     onPress={this.onPress}
                                 >
-                                    <MaterialCommunityIcons name="blank" color={'#ffffff'} size={21} />
-                                        <Text style={{ fontWeight: 'bold', color: '#ffffff', marginStart: '10%' }}>ถัดไป</Text>
+                                    <View style={{ flex: 0.1 }}></View>
+                                    <Text style={{ fontSize: 18,fontWeight: 'bold', color: '#ffffff'}}>ถัดไป</Text>
+                                    <View style={{ flex: 0.1 }}>
                                         <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                                    </View>
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
                 </ScrollView>
             </ImageBackground>
+            </SafeAreaView>
         )
     }
 }
@@ -185,6 +217,7 @@ const styles = StyleSheet.create({
         height: height / 15,
         marginHorizontal: 10,
         marginBottom: 10,
+        fontFamily:"PromptRegular"
     },
     bottom: {
         flex: 1,

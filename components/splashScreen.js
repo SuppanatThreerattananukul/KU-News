@@ -6,6 +6,7 @@ import {
   StatusBar,
   View,
 } from 'react-native'
+import * as Font from 'expo-font'
 
 class SplashScreen extends Component {
   state = {
@@ -16,6 +17,7 @@ class SplashScreen extends Component {
     setTimeout(() => {
       this.props.navigation.navigate('news')
     }, 2000)
+    this._loadingFont()
   }
 
   componentDidUpdate() {
@@ -23,6 +25,14 @@ class SplashScreen extends Component {
     setTimeout(() => {
         this.props.navigation.navigate('news')
       }, 2000)
+  }
+
+  async _loadingFont () {
+    await Font.loadAsync({
+      PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
+      PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
+      PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
+    })
   }
 
   render() {
