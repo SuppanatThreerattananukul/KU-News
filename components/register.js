@@ -12,15 +12,24 @@ import {
     ScrollView,
     SafeAreaView,
     Animated,
+    ActivityIndicator
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Font from 'expo-font'
+import firebase from '../database/firebaseDb';
 
 const { width, height } = Dimensions.get('window');
 class Register extends Component {
+    constructor() {
+        super();
+        this.dbRef = firebase.firestore().collection("new_users");
+        firebase.database.enableLogging(true);
+    }
     state = {
-        Username: '',
-        Password: '',
+        name: '',
+        mobile: '',
+        idLine: '',
+        isLoading: false,
         fadeAnim: new Animated.Value(0),
     }
     componentDidMount() {
@@ -29,6 +38,35 @@ class Register extends Component {
         // }, 1000)
         this.fadeIn();
         this._loadingFont();
+    }
+
+    storeUser= () => {
+        if(this.state.name == ''){
+            alert('กรุณากรอกชื่อ-นามสกุล')
+        }else {
+            // this.setState({
+            //     isLoading: true
+            // })
+            this.dbRef.add({
+                idLine: this.state.idLine,
+                mobile: this.state.mobile,
+                name: this.state.name,
+            }).then((res) => {
+                console.log(res)
+                this.setState({
+                    name: '',
+                    mobile: '',
+                    idLine: '',
+                    isLoading: false
+                })
+                alert('ลงทะเบียนเรียบร้อยแล้ว')
+            }).catch((err) => {
+                console.log('Error found: ', err)
+                this.setState({
+                    isLoading: false
+                })
+            })
+        }
     }
 
     async _loadingFont () {
@@ -52,6 +90,13 @@ class Register extends Component {
       };
 
     render() {
+        if(this.state.isLoading) {
+            return (
+                <View style={styles.preloader}>
+                    <ActivityIndicator size="large" color="#9E9E9E"/>
+                </View>       
+            )
+        }
         return (
             <SafeAreaView style={styles.container}>
             <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
@@ -64,7 +109,7 @@ class Register extends Component {
                             backgroundColor="#61dafb"
                             barStyle='dark-content'
                             showHideTransition='fade'
-                            hidden='false'/>
+                            hidden={false}/>
                         <Animated.View style={[{opacity: this.state.fadeAnim}]}>
                             <Image style={{ alignSelf: 'center', width: 120, height: 120, marginTop: 80 }}
                                 source={require('../asset/image/logo_KuNews2.png')}
@@ -78,8 +123,8 @@ class Register extends Component {
                             <View style={{ flex: 1 }}>
                                 <TextInput
                                     placeholder='ชื่อ-นามสกุล'
-                                    value={this.state.Title}
-                                    onChangeText={Title => this.setState({ Title })}
+                                    value={this.state.name}
+                                    onChangeText={name => this.setState({ name })}
                                     style={styles.input}
                                     underlineColorAndroid="transparent"
                                     keyboardType={'email-address'}
@@ -87,8 +132,8 @@ class Register extends Component {
 
                                 <TextInput
                                     placeholder='เบอร์โทรศัพท์'
-                                    value={this.state.Title}
-                                    onChangeText={Title => this.setState({ Title })}
+                                    value={this.state.mobile}
+                                    onChangeText={mobile => this.setState({ mobile })}
                                     style={styles.input}
                                     underlineColorAndroid="transparent"
                                     keyboardType={'number-pad'}
@@ -96,8 +141,8 @@ class Register extends Component {
 
                                 <TextInput
                                     placeholder='Id line'
-                                    value={this.state.Title}
-                                    onChangeText={Title => this.setState({ Title })}
+                                    value={this.state.idLine}
+                                    onChangeText={idLine => this.setState({ idLine })}
                                     style={styles.input}
                                     underlineColorAndroid="transparent"
                                     keyboardType={'email-address'}
@@ -146,7 +191,7 @@ class Register extends Component {
                             <View style={{ width: "95%" }}>
                                 <TouchableOpacity
                                     style={styles.button}
-                                    onPress={this.onPress}
+                                    onPress={this.storeUser}
                                 >
                                     <View style={{ flex: 0.1 }}></View>
                                     <Text style={{ fontSize: 18,fontWeight: 'bold', color: '#ffffff'}}>ถัดไป</Text>
@@ -165,6 +210,15 @@ class Register extends Component {
 }
 
 const styles = StyleSheet.create({
+    preloader: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     flex: {
         flex: 0,
     },
@@ -213,7 +267,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#EAEDED",
         paddingLeft: 10,
-        color: 'white',
+        color: 'black',
         height: height / 15,
         marginHorizontal: 10,
         marginBottom: 10,

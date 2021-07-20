@@ -63,7 +63,7 @@ class News extends Component {
                             backgroundColor="#61dafb"
                             barStyle='dark-content'
                             showHideTransition='fade'
-                            hidden='false'/>
+                            hidden={false}/>
                         <Animated.View style={{opacity: this.state.fadeAnim}}>
                         <Image style={{ alignSelf: 'center', width: 150, height: 150, marginTop: 80 }}
                             source={require('../asset/image/logo_KuNews2.png')}

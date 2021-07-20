@@ -62,7 +62,7 @@ class Main extends Component {
               backgroundColor="#61dafb"
               barStyle='dark-content'
               showHideTransition='fade'
-              hidden='false'/>
+              hidden={false}/>
             <Animated.View style={[styles.content, {opacity: this.state.fadeAnim}]}>
               <View style={styles.row}>
                 <View style={{ justifyContent: 'center' }}>
