@@ -70,7 +70,7 @@ class Main extends Component {
                     source={require('../asset/image/logo_KuNews2.png')} />
                 </View>
                 <View style={{ justifyContent: 'center', marginStart: 20 }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#696969', fontFamily:"PromptBold"}}>Kubet New</Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#696969', fontFamily:"PromptBold"}}>Kubet News</Text>
                   <Text style={{ fontSize: 20, color: '#696969', fontFamily:"PromptRegular"}}>V.0.0.1</Text>
                 </View>
               </View>
