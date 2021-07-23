@@ -81,7 +81,7 @@ class Main extends Component {
               <Animated.View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20, opacity: this.state.fadeAnim}}>
                 <Text style={{ fontWeight: 'bold', fontSize: 20 ,color: '#696969',fontFamily:"PromptBold"}}>เข้าสู่ระบบ KUBET</Text>
                 <Text style={{ fontSize: 16 ,color: '#696969', fontFamily:"PromptRegular"}}>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
-                <Text style={{ fontSize: 16,color: '#696969', fontFamily:"PromptRegular"}}>เพื่อเริ่มต้นการใช้งาน</Text>
+                <Text style={{ fontSize: 16,color: '#696969', fontFamily:"PromptRegular"}}>เพื่อเริ่มการใช้งาน</Text>
               </Animated.View>
               <View style={{ width: "95%" }}>
               <TouchableOpacity
@@ -109,7 +109,7 @@ class Main extends Component {
                   onPress={() => { Linking.openURL('https://th.ku1888.net/Home/HelpCenter') }}
                 >
                   <View style={{ flex: 0.1 }}></View>
-                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>บริการลูกค้า24ชม.</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>บริการลูกค้า 24ชม.</Text>
                   <View style={{ flex: 0.1 }}>
                       <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                   </View>
