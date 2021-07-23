@@ -43,13 +43,12 @@ class Register extends Component {
 
     storeUser= () => {
         console.log("test ",firestore().collection('new_users').doc('IQnnwkCU3R0lASk2dpnv').get())
-        if(this.state.name == ''){
-            alert('กรุณากรอกชื่อ-นามสกุล')
+        if(this.state.name == '' || this.state.idLine == '' || this.state.mobile == ''){
+            alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }else {
-            // this.setState({
-            //     isLoading: true
-            // })
-
+            this.setState({
+                isLoading: true
+            })
             firestore().collection("new_users").add({
                 idLine: this.state.idLine,
                 mobile: this.state.mobile,
@@ -138,6 +137,7 @@ class Register extends Component {
                                     value={this.state.mobile}
                                     onChangeText={mobile => this.setState({ mobile })}
                                     style={styles.input}
+                                    maxLength={10}
                                     underlineColorAndroid="transparent"
                                     keyboardType={'number-pad'}
                                 />
