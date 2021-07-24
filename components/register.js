@@ -12,7 +12,8 @@ import {
     ScrollView,
     SafeAreaView,
     Animated,
-    ActivityIndicator
+    ActivityIndicator,
+    Alert
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Font from 'expo-font'
@@ -44,7 +45,13 @@ class Register extends Component {
     storeUser= () => {
         console.log("test ",firestore().collection('new_users').doc('IQnnwkCU3R0lASk2dpnv').get())
         if(this.state.name == '' || this.state.idLine == '' || this.state.mobile == ''){
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            // alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            Alert.alert(
+                "ผิดพลาด",
+                "กรุณากรอกข้อมูลให้ครบถ้วน",
+                [
+                  { text: "ยืนยัน"}
+                ]);
         }else {
             this.setState({
                 isLoading: true
@@ -61,7 +68,13 @@ class Register extends Component {
                     idLine: '',
                     isLoading: false
                 })
-                alert('ลงทะเบียนเรียบร้อยแล้ว')
+                // alert('ลงทะเบียนเรียบร้อยแล้ว')
+                Alert.alert(
+                    "สำเร็จ",
+                    "กรุณากรอกข้อมูลให้ครบถ้วน",
+                    [
+                      { text: "ยืนยัน"}
+                    ]);
             }).catch((err) => {
                 console.log('Error found: ', err)
                 this.setState({
@@ -78,10 +91,6 @@ class Register extends Component {
           PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
         })
       }
-
-    onPress = () => {
-        alert("test")
-    }
 
     fadeIn = () => {
         // Will change fadeAnim value to 1 in 5 seconds
