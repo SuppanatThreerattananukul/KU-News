@@ -12,7 +12,8 @@ import {
     ScrollView,
     SafeAreaView,
     Animated,
-    ActivityIndicator
+    ActivityIndicator,
+    Alert
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Font from 'expo-font'
@@ -44,9 +45,19 @@ class Register extends Component {
 
         // console.log("test ", firestore().collection('new_users').doc('mobile').get())
         if (this.state.name == '' || this.state.idLine == '' || this.state.mobile == '') {
-            alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            Alert.alert(
+                "ผิดพลาด",
+                "กรุณากรอกข้อมูลให้ครบถ้วน",
+                [
+                  { text: "ยืนยัน"}
+                ]);
         } else if (this.state.mobile.size != 10) {
-            alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง')
+            Alert.alert(
+                "ผิดพลาด",
+                "กรุณากรอกข้อมูลให้ครบถ้วน",
+                [
+                  { text: "ยืนยัน"}
+                ]);
         } else {
             firestore()
                 .collection('new_users')
@@ -73,7 +84,12 @@ class Register extends Component {
                                 idLine: '',
                                 isLoading: false
                             })
-                            alert('ลงทะเบียนเรียบร้อยแล้ว')
+                            Alert.alert(
+                                "สำเร็จ",
+                                "ลงทะเบียนเรียบร้อยแล้ว",
+                                [
+                                  { text: "ยืนยัน"}
+                                ]);
                         }).catch((err) => {
                             console.log('Error found: ', err)
                             this.setState({
@@ -91,10 +107,6 @@ class Register extends Component {
             PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
             PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
         })
-    }
-
-    onPress = () => {
-        alert("test")
     }
 
     fadeIn = () => {

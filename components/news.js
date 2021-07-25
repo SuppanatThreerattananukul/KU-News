@@ -84,7 +84,7 @@ class News extends Component {
                                 </View>
                                 <View style={{ marginStart: 5 }}>
                                     <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความลับ</Text>
-                                    <Text style={{ color: '#808080',fontFamily:"PromptRegular" }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ100%</Text>
+                                    <Text style={{ color: '#808080',fontFamily:"PromptRegular" }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
                                 </View>
 
                             </View>
