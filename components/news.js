@@ -71,7 +71,7 @@ class News extends Component {
 
                         <View style={styles.content}>
                             <Text style={{ fontSize: 20,fontWeight: 'bold',color: '#696969', fontFamily:"PromptBold" }}>Kubet News</Text>
-                            <Text style={{ fontSize: 16,color: '#696969',fontFamily:"PromptRegular" }}>V.0.0.1</Text>
+                            <Text style={{ fontSize: 16,color: '#696969',fontFamily:"PromptRegular" }}>V.1.0.0</Text>
                         </View>
                         </Animated.View>
 
