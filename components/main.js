@@ -13,7 +13,6 @@ import {
   Animated,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as Font from 'expo-font'
 
 class Main extends Component {
   state = {
@@ -26,16 +25,8 @@ class Main extends Component {
     //   this.props.navigation.navigate('Main')
     // }, 1000)
     this.fadeIn();
-    this._loadingFont();
   }
 
-  async _loadingFont () {
-    await Font.loadAsync({
-      PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
-      PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
-      PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
-    })
-  }
 
   onPress = () => {
     this.props.navigation.navigate('register')
@@ -70,8 +61,8 @@ class Main extends Component {
                     source={require('../asset/image/logo_KuNews2.png')} />
                 </View>
                 <View style={{ justifyContent: 'center', marginStart: 20 }}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#696969', fontFamily:"PromptBold"}}>Kubet News</Text>
-                  <Text style={{ fontSize: 20, color: '#696969', fontFamily:"PromptRegular"}}>V.1.0.0</Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#696969'}}>Kubet News</Text>
+                  <Text style={{ fontSize: 20, color: '#696969'}}>V.1.0.0</Text>
                 </View>
               </View>
 
@@ -79,9 +70,9 @@ class Main extends Component {
 
             <View style={styles.bottom}>
               <Animated.View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20, opacity: this.state.fadeAnim}}>
-                <Text style={{ fontWeight: 'bold', fontSize: 20 ,color: '#696969',fontFamily:"PromptBold"}}>เข้าสู่ระบบ KUBET</Text>
-                <Text style={{ fontSize: 16 ,color: '#696969', fontFamily:"PromptRegular"}}>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
-                <Text style={{ fontSize: 16,color: '#696969', fontFamily:"PromptRegular"}}>เพื่อเริ่มการใช้งาน</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 20 ,color: '#696969'}}>เข้าสู่ระบบ KUBET</Text>
+                <Text style={{ fontSize: 16 ,color: '#696969'}}>กรุณาเลือกสมัคร/เข้าสู่ระบบ</Text>
+                <Text style={{ fontSize: 16,color: '#696969'}}>เพื่อเริ่มการใช้งาน</Text>
               </Animated.View>
               <View style={{ width: "95%" }}>
               <TouchableOpacity
@@ -89,7 +80,7 @@ class Main extends Component {
                   onPress={this.onPress}
                 >
                   <View style={{ flex: 0.1 }}></View>
-                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>สมัครสมาชิก</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff'}}>สมัครสมาชิก</Text>
                   <View style={{ flex: 0.1 }}>
                     <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                   </View>
@@ -99,7 +90,7 @@ class Main extends Component {
                   onPress={() => { Linking.openURL('https://th.ku1888.net/') }}
                 >
                   <View style={{ flex: 0.1 }}></View>
-                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>เข้าสู่ระบบ</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff'}}>เข้าสู่ระบบ</Text>
                   <View style={{ flex: 0.1 }}>
                     <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                   </View>
@@ -109,7 +100,7 @@ class Main extends Component {
                   onPress={() => { Linking.openURL('https://th.ku1888.net/Home/HelpCenter') }}
                 >
                   <View style={{ flex: 0.1 }}></View>
-                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff',fontFamily:"PromptBold"}}>บริการลูกค้า 24ชม.</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff'}}>บริการลูกค้า 24ชม.</Text>
                   <View style={{ flex: 0.1 }}>
                       <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                   </View>

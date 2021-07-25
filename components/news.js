@@ -13,8 +13,6 @@ import {
 } from 'react-native'
 import { color } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as Font from 'expo-font'
-
 class News extends Component {
     state = {
         Username: '',
@@ -27,16 +25,7 @@ class News extends Component {
         //   this.props.navigation.navigate('news')
         // }, 1000)
         this.fadeIn();
-        this._loadingFont();
     }
-
-    async _loadingFont () {
-        await Font.loadAsync({
-          PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
-          PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
-          PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
-        })
-      }
 
     onPress = () => {
         this.props.navigation.navigate('main')
@@ -70,8 +59,8 @@ class News extends Component {
                         />
 
                         <View style={styles.content}>
-                            <Text style={{ fontSize: 20,fontWeight: 'bold',color: '#696969', fontFamily:"PromptBold" }}>Kubet News</Text>
-                            <Text style={{ fontSize: 16,color: '#696969',fontFamily:"PromptRegular" }}>V.1.0.0</Text>
+                            <Text style={{ fontSize: 20,fontWeight: 'bold',color: '#696969'}}>Kubet News</Text>
+                            <Text style={{ fontSize: 16,color: '#696969'}}>V.1.0.0</Text>
                         </View>
                         </Animated.View>
 
@@ -83,8 +72,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความลับ</Text>
-                                    <Text style={{ color: '#808080',fontFamily:"PromptRegular" }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080'}}>ความลับ</Text>
+                                    <Text style={{ color: '#808080'}}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
                                 </View>
 
                             </View>
@@ -96,8 +85,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความปลอดภัย</Text>
-                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080'}}>ความปลอดภัย</Text>
+                                    <Text style={{ color: '#808080'}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                 </View>
 
                             </View>
@@ -109,8 +98,8 @@ class News extends Component {
                                     />
                                 </View>
                                 <View style={{ marginStart: 5 }}>
-                                    <Text style={{ fontWeight: 'bold',color: '#808080',fontFamily:"PromptBold" }}>ความเร็ว</Text>
-                                    <Text style={{ color: '#808080', fontFamily:"PromptRegular"}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
+                                    <Text style={{ fontWeight: 'bold',color: '#808080'}}>ความเร็ว</Text>
+                                    <Text style={{ color: '#808080'}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                 </View>
 
                             </View>
@@ -120,7 +109,7 @@ class News extends Component {
                                     onPress={this.onPress}
                                 >
                                     <View style={{ flex: 0.1 }}></View>
-                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff', fontFamily:"PromptBold" }}>ถัดไป</Text>
+                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff'}}>ถัดไป</Text>
                                     <View style={{ flex: 0.1 }}>
                                         <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={21} />
                                     </View>

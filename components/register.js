@@ -16,7 +16,6 @@ import {
     Alert
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as Font from 'expo-font'
 import firebase from '../database/firebaseDb';
 import firestore from '@react-native-firebase/firestore';
 
@@ -38,7 +37,6 @@ class Register extends Component {
         //   this.props.navigation.navigate('Register')
         // }, 1000)
         this.fadeIn();
-        this._loadingFont();
     }
 
     storeUser = () => {
@@ -101,14 +99,6 @@ class Register extends Component {
         }
     }
 
-    async _loadingFont() {
-        await Font.loadAsync({
-            PromptLight: require('../asset/fonts/Prompt-Light.ttf'),
-            PromptRegular: require('../asset/fonts/Prompt-Regular.ttf'),
-            PromptBold: require('../asset/fonts/Prompt-Bold.ttf')
-        })
-    }
-
     fadeIn = () => {
         // Will change fadeAnim value to 1 in 5 seconds
         Animated.timing(this.state.fadeAnim, {
@@ -143,8 +133,8 @@ class Register extends Component {
                                     source={require('../asset/image/logo_KuNews2.png')}
                                 />
                                 <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
-                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#696969', fontFamily: "PromptBold" }}>สมัครสมาชิก</Text>
-                                    <Text style={{ fontSize: 16, color: '#696969', fontFamily: "PromptRegular" }}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
+                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#696969'}}>สมัครสมาชิก</Text>
+                                    <Text style={{ fontSize: 16, color: '#696969'}}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
                                 </View>
                             </Animated.View>
                             <Animated.View style={[{ opacity: this.state.fadeAnim }]}>
@@ -186,8 +176,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080', fontFamily: "PromptBold" }}>ความลับ</Text>
-                                        <Text style={{ color: '#808080', fontFamily: "PromptRegular" }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความลับ</Text>
+                                        <Text style={{ color: '#808080'}}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
                                     </View>
 
                                 </View>
@@ -199,8 +189,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080', fontFamily: "PromptBold" }}>ความปลอดภัย</Text>
-                                        <Text style={{ color: '#808080', fontFamily: "PromptRegular" }}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความปลอดภัย</Text>
+                                        <Text style={{ color: '#808080'}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                     </View>
 
                                 </View>
@@ -212,8 +202,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080', fontFamily: "PromptBold" }}>ความเร็ว</Text>
-                                        <Text style={{ color: '#808080', fontFamily: "PromptRegular" }}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความเร็ว</Text>
+                                        <Text style={{ color: '#808080'}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                     </View>
 
                                 </View>
@@ -300,7 +290,6 @@ const styles = StyleSheet.create({
         height: height / 15,
         marginHorizontal: 10,
         marginBottom: 10,
-        fontFamily: "PromptRegular"
     },
     bottom: {
         flex: 1,
