@@ -64,7 +64,7 @@ class Register extends Component {
                 .where('mobile', '==', this.state.mobile)
                 .get()
                 .then(querySnapshot => {
-                    console.log('Total users: ', querySnapshot.size);
+                    // console.log('Total users: ', querySnapshot.size);
                     if (querySnapshot.size >= 1) {
                         alert('เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว \n กรุณาใช้เบอร์โทรศัพท์อื่น')
                     }
