@@ -13,7 +13,8 @@ import {
     SafeAreaView,
     Animated,
     ActivityIndicator,
-    Alert
+    Alert,
+    Linking,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firebase from '../database/firebaseDb';
@@ -49,7 +50,7 @@ class Register extends Component {
                 [
                     { text: "ยืนยัน" }
                 ]);
-        } else if (this.state.mobile.size != 10) {
+        } else if ((this.state.mobile.match(/\d/g) || []).length != 10) {
             Alert.alert(
                 "ผิดพลาด",
                 "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง",
@@ -66,7 +67,7 @@ class Register extends Component {
                     if (querySnapshot.size >= 1) {
                         Alert.alert(
                             "ผิดพลาด",
-                            "เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว \n กรุณาใช้เบอร์โทรศัพท์อื่น",
+                            "เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว \nกรุณาใช้เบอร์โทรศัพท์อื่น",
                             [
                                 { text: "ยืนยัน" }
                             ]);
@@ -80,7 +81,6 @@ class Register extends Component {
                             mobile: this.state.mobile,
                             name: this.state.name,
                         }).then((res) => {
-                            console.log(res)
                             this.setState({
                                 name: '',
                                 mobile: '',
@@ -91,7 +91,11 @@ class Register extends Component {
                                 "สำเร็จ",
                                 "ลงทะเบียนเรียบร้อยแล้ว",
                                 [
-                                    { text: "ยืนยัน" }
+                                    {
+                                        text: "ยืนยัน",
+                                        // onPress: () => this.props.navigation.navigate('main'),
+                                        onPress: () => Linking.openURL('https://th.ku1888.net/'),
+                                    }
                                 ]);
                         }).catch((err) => {
                             console.log('Error found: ', err)
@@ -112,7 +116,11 @@ class Register extends Component {
         }).start();
     };
 
-    render() {
+    goBack = () => {
+        this.props.navigation.goBack()
+    }
+
+    renderLoading = () => {
         if (this.state.isLoading) {
             return (
                 <View style={styles.preloader}>
@@ -120,6 +128,9 @@ class Register extends Component {
                 </View>
             )
         }
+    }
+
+    render() {
         return (
             <SafeAreaView style={styles.container}>
                 <ImageBackground source={require('../asset/image/bg2.png')} resizeMode="cover" style={styles.image}>
@@ -139,7 +150,7 @@ class Register extends Component {
                                 />
                                 <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                                     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#696969' }}>สมัครสมาชิก</Text>
-                                    <Text style={{ fontSize: 16, color: '#696969' }}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
+                                    <Text style={{ fontSize: 16, color: '#696969' }}>กรอกข้อมูล เพื่อสมัครสมาชิก KU CASINO</Text>
                                 </View>
                             </Animated.View>
                             <Animated.View style={[{ opacity: this.state.fadeAnim }]}>
@@ -212,13 +223,23 @@ class Register extends Component {
                                     </View>
 
                                 </View>
-                                <View style={{ width: "95%" }}>
+                                <View style={{ width: "95%", marginTop: 30, }}>
                                     <TouchableOpacity
                                         style={styles.button}
                                         onPress={this.storeUser}
                                     >
                                         <View style={{ flex: 0.1 }}></View>
-                                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff' }}>ถัดไป</Text>
+                                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff' }}>บันทึก</Text>
+                                        <View style={{ flex: 0.1 }}>
+                                            <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
+                                        </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        style={styles.buttonBack}
+                                        onPress={this.goBack}
+                                    >
+                                        <View style={{ flex: 0.1 }}></View>
+                                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff' }}>ย้อนกลับ</Text>
                                         <View style={{ flex: 0.1 }}>
                                             <MaterialCommunityIcons name="chevron-double-right" color={'#ffffff'} size={14 * 1.5} />
                                         </View>
@@ -226,6 +247,7 @@ class Register extends Component {
                                 </View>
                             </View>
                         </View>
+                        {this.renderLoading()}
                     </ScrollView>
                 </ImageBackground>
             </SafeAreaView>
@@ -241,7 +263,8 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        opacity: 0.5,
     },
     flex: {
         flex: 0,
@@ -283,7 +306,15 @@ const styles = StyleSheet.create({
         backgroundColor: "#3498DB",
         padding: 10,
         borderRadius: 5,
-        marginTop: 30,
+    },
+    buttonBack: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: "center",
+        backgroundColor: "#B2BABB",
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
     },
     input: {
         backgroundColor: 'rgba(255,255,255,0.2)',
