@@ -47,14 +47,14 @@ class Register extends Component {
                 "ผิดพลาด",
                 "กรุณากรอกข้อมูลให้ครบถ้วน",
                 [
-                  { text: "ยืนยัน"}
+                    { text: "ยืนยัน" }
                 ]);
         } else if (this.state.mobile.size != 10) {
             Alert.alert(
                 "ผิดพลาด",
-                "กรุณากรอกข้อมูลให้ครบถ้วน",
+                "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง",
                 [
-                  { text: "ยืนยัน"}
+                    { text: "ยืนยัน" }
                 ]);
         } else {
             firestore()
@@ -64,7 +64,12 @@ class Register extends Component {
                 .then(querySnapshot => {
                     // console.log('Total users: ', querySnapshot.size);
                     if (querySnapshot.size >= 1) {
-                        alert('เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว \n กรุณาใช้เบอร์โทรศัพท์อื่น')
+                        Alert.alert(
+                            "ผิดพลาด",
+                            "เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว \n กรุณาใช้เบอร์โทรศัพท์อื่น",
+                            [
+                                { text: "ยืนยัน" }
+                            ]);
                     }
                     else {
                         this.setState({
@@ -86,7 +91,7 @@ class Register extends Component {
                                 "สำเร็จ",
                                 "ลงทะเบียนเรียบร้อยแล้ว",
                                 [
-                                  { text: "ยืนยัน"}
+                                    { text: "ยืนยัน" }
                                 ]);
                         }).catch((err) => {
                             console.log('Error found: ', err)
@@ -133,8 +138,8 @@ class Register extends Component {
                                     source={require('../asset/image/logo_KuNews2.png')}
                                 />
                                 <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
-                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#696969'}}>สมัครสมาชิก</Text>
-                                    <Text style={{ fontSize: 16, color: '#696969'}}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
+                                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#696969' }}>สมัครสมาชิก</Text>
+                                    <Text style={{ fontSize: 16, color: '#696969' }}>กรอกเบอร์มือถือ เพื่อสมัครสมาชิก KU CASINO</Text>
                                 </View>
                             </Animated.View>
                             <Animated.View style={[{ opacity: this.state.fadeAnim }]}>
@@ -176,8 +181,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความลับ</Text>
-                                        <Text style={{ color: '#808080'}}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080' }}>ความลับ</Text>
+                                        <Text style={{ color: '#808080' }}>ข้อมูลลูกค้าทั้งหมดจะถูกเก็บเป็นความลับ 100%</Text>
                                     </View>
 
                                 </View>
@@ -189,8 +194,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความปลอดภัย</Text>
-                                        <Text style={{ color: '#808080'}}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080' }}>ความปลอดภัย</Text>
+                                        <Text style={{ color: '#808080' }}>แหล่งการเข้าใช้งานของลูกค้าจะถูกปิดเป็นความลับ</Text>
                                     </View>
 
                                 </View>
@@ -202,8 +207,8 @@ class Register extends Component {
                                         />
                                     </View>
                                     <View style={{ marginStart: 5 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#808080'}}>ความเร็ว</Text>
-                                        <Text style={{ color: '#808080'}}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
+                                        <Text style={{ fontWeight: 'bold', color: '#808080' }}>ความเร็ว</Text>
+                                        <Text style={{ color: '#808080' }}>เข้าสู่ระบบง่ายและรวดเร็ว</Text>
                                     </View>
 
                                 </View>
